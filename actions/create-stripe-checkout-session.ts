@@ -1,3 +1,5 @@
+"use server";
+
 import { api } from "@/convex/_generated/api";
 import { Id } from "@/convex/_generated/dataModel";
 import { DURATIONS } from "@/convex/constants";

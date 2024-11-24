@@ -19,7 +19,7 @@ function SearchBar() {
           size="sm"
           className="absolute right-3 top-1/2 -translate-y-1/2 text-white text-sm font-medium"
         >
-          Search
+          Buscar
         </Button>
       </Form>
     </div>

@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import { Button } from "./ui/button";
 import ReleaseTicket from "./release-ticket";
 
+import { createStripeCheckoutSession } from "@/actions/create-stripe-checkout-session";
+
 function PurchaseTicket({ eventId }: { eventId: Id<"events"> }) {
   const router = useRouter();
   const { user } = useUser();
@@ -49,7 +51,26 @@ function PurchaseTicket({ eventId }: { eventId: Id<"events"> }) {
     return () => clearInterval(interval);
   }, [offerExpiresAt, isExpired]);
 
-  const handlePurchase = async () => {};
+  const handlePurchase = async () => {
+    if (!user) {
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+      const { sessionUrl } = await createStripeCheckoutSession({
+        eventId,
+      });
+
+      if (sessionUrl) {
+        router.push(sessionUrl);
+      }
+    } catch (error) {
+      console.log("error ", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   if (!user || !queuePosition || queuePosition.status !== "offered") {
     return null;

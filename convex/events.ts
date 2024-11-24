@@ -3,6 +3,72 @@ import { mutation, query } from "./_generated/server";
 import { DURATIONS, TICKET_STATUS, WAITING_LIST_STATUS } from "./constants";
 import { internal } from "./_generated/api";
 
+export const update = mutation({
+  args: {
+    eventId: v.id("events"),
+    name: v.string(),
+    description: v.string(),
+    location: v.string(),
+    eventDate: v.number(),
+    price: v.number(),
+    totalTickets: v.number(),
+  },
+  async handler(ctx, args) {
+    const { eventId, ...updates } = args;
+
+    // get curr evento to check tickets sold
+    const event = await ctx.db.get(eventId);
+    if (!event) {
+      throw new Error("Event not found!");
+    }
+
+    const soldTicket = await ctx.db
+      .query("tickets")
+      .withIndex("by_event", (q) => q.eq("eventId", eventId))
+      .filter((q) =>
+        q.or(q.eq(q.field("status"), "valid"), q.eq(q.field("status"), "used")),
+      )
+      .collect();
+
+    if (updates.totalTickets < soldTicket.length) {
+      throw new Error(
+        `Número de ingressos inferior ao número de ingressos já vendido! (${soldTicket.length} ingressos vendidos)`,
+      );
+    }
+
+    await ctx.db.patch(eventId, updates);
+    return eventId;
+  },
+});
+
+export const create = mutation({
+  args: {
+    name: v.string(),
+    description: v.string(),
+    location: v.string(),
+    eventDate: v.number(),
+    price: v.number(),
+    totalTickets: v.number(),
+    userId: v.string(),
+  },
+  async handler(
+    ctx,
+    { description, eventDate, location, name, price, totalTickets, userId },
+  ) {
+    const eventId = await ctx.db.insert("events", {
+      description,
+      eventDate,
+      location,
+      name,
+      price,
+      totalTickets,
+      userId,
+    });
+
+    return eventId;
+  },
+});
+
 export const checkAvailability = query({
   args: { eventId: v.id("events") },
   async handler(ctx, { eventId }) {

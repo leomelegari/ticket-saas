@@ -220,8 +220,8 @@ function SellerDashboard() {
                       </svg>
                       <span className="ml-2">
                         {accountStatus.payoutsEnabled
-                          ? "Pode aceitar pagamentos"
-                          : "Não pode aceitar pagamentos"}
+                          ? "Pode receber pagamentos"
+                          : "Não pode receber pagamentos"}
                       </span>
                     </div>
                   </div>
