@@ -200,7 +200,7 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
           {/* price tag */}
           <div className="flex flex-row justify-end items-end gap-2 ml-4">
             <span
-              className={`px-4 py-1.5 font-semibold rounded-full ${
+              className={`px-4 py-1.5 font-semibold rounded-full shrink-0 ${
                 isPastEvent
                   ? "bg-gray-50 text-gray-500"
                   : "bg-green-50 text-green-700"

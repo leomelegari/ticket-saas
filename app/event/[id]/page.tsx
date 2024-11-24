@@ -20,7 +20,6 @@ import { useParams } from "next/navigation";
 function EventPage() {
   const params = useParams();
   const { user } = useUser();
-  console.log("user ", user);
 
   const event = useQuery(api.events.getById, {
     eventId: params.id as Id<"events">,

@@ -20,7 +20,6 @@ export async function createStripeCheckoutSession({
   eventId: Id<"events">;
 }) {
   const { userId } = await auth();
-  console.log("userId ", userId);
 
   if (!userId) {
     throw new Error("Not authenticated");
