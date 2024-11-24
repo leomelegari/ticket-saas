@@ -7,7 +7,8 @@ import { useQuery } from "convex/react";
 import {
   CalendarDaysIcon,
   CheckIcon,
-  ListStartIcon,
+  CircleArrowRightIcon,
+  LoaderCircleIcon,
   MapPinIcon,
   PencilIcon,
   StarIcon,
@@ -17,6 +18,7 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Button } from "./ui/button";
+import PurchaseTicket from "./purchase-ticket";
 
 function EventCard({ eventId }: { eventId: Id<"events"> }) {
   const { user } = useUser();
@@ -45,6 +47,54 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
 
   const isPastEvent = event.eventDate < Date.now();
   const isEventOwner = user?.id === event.userId;
+
+  const renderQueuePosition = () => {
+    if (!queuePosition || queuePosition.status !== "waiting") {
+      return null;
+    }
+
+    if (availability.purchasedCount >= availability.totalTickets) {
+      return (
+        <div className=" flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+          <div className="flex items-center">
+            <TicketIcon className="size-5 text-gray-400 mr-2" />
+            <span className="text-gray-600">Ingressos esgotados</span>
+          </div>
+        </div>
+      );
+    }
+
+    if (queuePosition.position === 2) {
+      return (
+        <div className="flex flex-col lg:flex-row items-center justify-between p-3 bg-amber-50 rounded-lg border border-amber-100">
+          <div className="flex items-center">
+            <CircleArrowRightIcon className="size-5 text-amber-500 mr-2" />
+            <span className="text-amber-700 font-medium">
+              Você é o próximo! (Posição na fila: {queuePosition.position})
+            </span>
+          </div>
+          <div className="flex items-center">
+            <LoaderCircleIcon className="size-4 mr-1 animate-spin text-amber-500" />
+            <span className="text-amber-600 text-sm">
+              Aguardando ingresso...
+            </span>
+          </div>
+        </div>
+      );
+    }
+
+    return (
+      <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-100">
+        <div className="flex items-center">
+          <LoaderCircleIcon className="size-4 mr-2 animate-spin text-blue-500" />
+          <span className="text-blue-700">Posição na fila</span>
+        </div>
+        <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium">
+          {queuePosition.position}
+        </span>
+      </div>
+    );
+  };
 
   const renderTicketStatus = () => {
     if (!user) {
@@ -90,21 +140,24 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
 
     if (queuePosition) {
       return (
-        <div>
+        <div className="mt-4">
           {queuePosition.status === "offered" && (
             <PurchaseTicket eventId={eventId} />
           )}
-          {/* {renderQueuePosition()} */}
+          {renderQueuePosition()}
           {queuePosition.status === "expired" && (
-            <div>
-              <span>
-                <XCircleIcon />
+            <div className="p-3 bg-red-50 rounded-lg border border-red-100">
+              <span className="text-red-700 font-medium flex items-center">
+                <XCircleIcon className="size-5 mr-2" />
+                Expirado
               </span>
             </div>
           )}
         </div>
       );
     }
+
+    return null;
   };
 
   return (
@@ -145,24 +198,23 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
               </span>
             )}
           </div>
-        </div>
-
-        {/* price tag */}
-        <div className="flex flex-row w-full justify-end items-end gap-2 ml-4">
-          <span
-            className={`px-4 py-1.5 font-semibold rounded-full ${
-              isPastEvent
-                ? "bg-gray-50 text-gray-500"
-                : "bg-green-50 text-green-700"
-            }`}
-          >
-            R$ {event.price.toFixed(2)}
-          </span>
-          {availability.purchasedCount >= availability.totalTickets && (
-            <span className="px-4 py-1.5 bg-red-50 text-red-700 font-semibold rounded-full text-sm">
-              Esgotado
+          {/* price tag */}
+          <div className="flex flex-row justify-end items-end gap-2 ml-4">
+            <span
+              className={`px-4 py-1.5 font-semibold rounded-full ${
+                isPastEvent
+                  ? "bg-gray-50 text-gray-500"
+                  : "bg-green-50 text-green-700"
+              }`}
+            >
+              R$ {event.price.toFixed(2)}
             </span>
-          )}
+            {availability.purchasedCount >= availability.totalTickets && (
+              <span className="px-4 py-1.5 bg-red-50 text-red-700 font-semibold rounded-full text-sm">
+                Esgotado
+              </span>
+            )}
+          </div>
         </div>
 
         {/* event details */}

@@ -44,10 +44,10 @@ function Header() {
           <SignedIn>
             <div className="flex items-center gap-3">
               <Link href="/seller">
-                <Button className="">Vender ingressos</Button>
+                <Button className="">Criar evento</Button>
               </Link>
               <Link href="/tickets">
-                <Button variant="outline">Meus ingressos</Button>
+                <Button variant="outline">Meus eventos</Button>
               </Link>
               <UserButton />
             </div>
@@ -63,11 +63,11 @@ function Header() {
         <div className="lg:hidden w-full flex justify-center gap-3">
           <SignedIn>
             <Link href="/seller" className="flex-1">
-              <Button className="w-full">Vender ingressos</Button>
+              <Button className="w-full">Criar evento</Button>
             </Link>
             <Link href="/tickets" className="flex-1">
               <Button variant="outline" className="w-full">
-                Meus ingressos
+                Meus eventos
               </Button>
             </Link>
           </SignedIn>
