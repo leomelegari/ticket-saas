@@ -125,10 +125,9 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
         <div className="mt-4 flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100">
           <div className="flex items-center">
             <CheckIcon className="size-5 text-green-600 mr-2" />
-            <span className="text-green-700 font-medium">Comprado</span>
+            <span className="text-green-700 font-medium">Já adquirido</span>
           </div>
           <Button
-            size="sm"
             className="rounded-full bg-green-600 hover:bg-green-700"
             onClick={() => router.push(`/tickets/${userTicket._id}`)}
           >
@@ -227,7 +226,7 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
           <div className="flex items-center text-gray-600">
             <CalendarDaysIcon className="size-4 mr-2" />
             <span>
-              {new Date(event.eventDate).toLocaleDateString()}{" "}
+              {new Date(event.eventDate).toLocaleDateString("pt-BR")}{" "}
               {isPastEvent && "(Finalizado)"}
             </span>
           </div>

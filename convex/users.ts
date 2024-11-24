@@ -19,13 +19,12 @@ export const updateOrCreateUserStripeConnectId = mutation({
 
 export const getUsersStripeConnectId = query({
   args: { userId: v.string() },
-  async handler(ctx, { userId }) {
+  handler: async (ctx, args) => {
     const user = await ctx.db
       .query("users")
-      .filter((q) => q.eq(q.field("userId"), userId))
+      .filter((q) => q.eq(q.field("userId"), args.userId))
       .filter((q) => q.neq(q.field("stripeConnectId"), undefined))
       .first();
-
     return user?.stripeConnectId;
   },
 });

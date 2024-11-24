@@ -104,9 +104,9 @@ function PurchaseTicket({ eventId }: { eventId: Id<"events"> }) {
         <Button
           onClick={handlePurchase}
           disabled={isExpired || isLoading}
-          className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 transform scale-[1.02] transition-all disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="w-full font-bold bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 transform scale-[1.02] transition-all disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
-          {isLoading ? "Redirecionando..." : "Comprar ➞"}
+          {isLoading ? "Redirecionando..." : "Comprar agora ➞"}
         </Button>
 
         <div className="mt-4">

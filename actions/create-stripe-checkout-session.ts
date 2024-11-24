@@ -20,6 +20,7 @@ export async function createStripeCheckoutSession({
   eventId: Id<"events">;
 }) {
   const { userId } = await auth();
+  console.log("userId ", userId);
 
   if (!userId) {
     throw new Error("Not authenticated");
@@ -45,7 +46,7 @@ export async function createStripeCheckoutSession({
   const stripeConnectId = await convex.query(
     api.users.getUsersStripeConnectId,
     {
-      userId: event.userId,
+      userId: userId,
     },
   );
 

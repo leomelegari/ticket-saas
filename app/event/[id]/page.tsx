@@ -78,7 +78,7 @@ function EventPage() {
                       <span className="text-sm font-medium">Data</span>
                     </div>
                     <p className="text-gray-900">
-                      {new Date(event.eventDate).toLocaleDateString()}
+                      {new Date(event.eventDate).toLocaleDateString("pt-BR")}
                     </p>
                   </div>
 
