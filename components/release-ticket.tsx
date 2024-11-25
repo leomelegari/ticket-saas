@@ -39,7 +39,7 @@ function ReleaseTicket({
     <Button
       onClick={handleRelease}
       disabled={isReleasing}
-      className="w-full bg-red-100 text-red-700 hover:bg-red-200 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="w-full bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-400 hover:bg-red-200 disabled:opacity-50 disabled:cursor-not-allowed"
     >
       <XCircleIcon className="size-4" />
       {isReleasing ? "Cancelando..." : "Cancelar reserva"}

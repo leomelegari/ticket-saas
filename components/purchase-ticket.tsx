@@ -77,24 +77,24 @@ function PurchaseTicket({ eventId }: { eventId: Id<"events"> }) {
   }
 
   return (
-    <div className="bg-white p-6 rounded-xl shadow-lg border border-amber-200">
+    <div className="bg-white dark:bg-slate-800 p-6 rounded-xl shadow-lg border border-amber-200 dark:border-amber-900">
       <div className="space-y-4">
-        <div className="bg-white rounded-lg p-6 border border-gray-200">
+        <div className="bg-white dark:bg-slate-700 rounded-lg p-6 border border-gray-200 dark:border-slate-600">
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-3">
-              <div className="size-12 rounded-full bg-amber-100 flex items-center justify-center">
-                <TicketIcon className="size-6 text-amber-600" />
+              <div className="size-12 rounded-full bg-amber-100 dark:bg-amber-900 flex items-center justify-center">
+                <TicketIcon className="size-6 text-amber-600 dark:text-amber-400" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-300">
                   Ingresso reservado
                 </h3>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-slate-400">
                   Reserva expira em {timeRemaining}
                 </p>
               </div>
             </div>
-            <div className="text-sm text-gray-600 leading-relaxed">
+            <div className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">
               Um ingresso foi reservado para você. Complete a compra antes do
               tempo de expiração para garantir seu lugar neste evento!
             </div>
@@ -104,7 +104,7 @@ function PurchaseTicket({ eventId }: { eventId: Id<"events"> }) {
         <Button
           onClick={handlePurchase}
           disabled={isExpired || isLoading}
-          className="w-full font-bold bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 transform scale-[1.02] transition-all disabled:from-gray-400 disabled:to-gray-500 disabled:cursor-not-allowed disabled:hover:scale-100"
+          className="w-full font-bold bg-gradient-to-r from-amber-500 dark:from-amber-800 to-amber-600 dark:to-amber-900 hover:from-amber-600 hover:dark:from-amber-900 hover:to-amber-700 dark:hover:to-amber-950 transform scale-[1.02] transition-all disabled:from-gray-400 dark:text-white disabled:to-gray-500 disabled:cursor-not-allowed disabled:hover:scale-100"
         >
           {isLoading ? "Redirecionando..." : "Comprar agora ➞"}
         </Button>

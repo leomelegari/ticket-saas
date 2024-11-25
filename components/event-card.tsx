@@ -107,7 +107,7 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
           <Button
             variant="outline"
             size="lg"
-            className="w-full"
+            className="w-full dark:bg-slate-800 dark:text-slate-400 dark:hover:bg-slate-600"
             onClick={(e) => {
               e.stopPropagation();
               router.push(`/seller/events/${eventId}/edit`);
@@ -122,13 +122,15 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
 
     if (userTicket) {
       return (
-        <div className="mt-4 flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-100">
+        <div className="mt-4 flex items-center justify-between p-3 bg-green-50 dark:bg-green-800 rounded-lg border border-green-100 dark:border-green-900">
           <div className="flex items-center">
-            <CheckIcon className="size-5 text-green-600 mr-2" />
-            <span className="text-green-700 font-medium">Já adquirido</span>
+            <CheckIcon className="size-5 text-green-600 dark:text-green-300 mr-2" />
+            <span className="text-green-700 dark:text-green-300 font-medium">
+              Já adquirido
+            </span>
           </div>
           <Button
-            className="rounded-full bg-green-600 hover:bg-green-700"
+            className="rounded-full dark:text-slate-100 bg-green-600 hover:bg-green-700"
             onClick={() => router.push(`/tickets/${userTicket._id}`)}
           >
             Ver ingresso
@@ -162,7 +164,7 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
   return (
     <div
       onClick={() => router.push(`/event/${eventId}`)}
-      className={`bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100 cursor-pointer overflow-hidden relative ${isPastEvent ? "opacity-75 hover:opacity-100" : ""}`}
+      className={`bg-white dark:bg-slate-900 rounded-xl shadow-sm hover:shadow-lg hover:dark:bg-slate-800 transition-all duration-300 border border-gray-100 dark:border-slate-800 cursor-pointer overflow-hidden relative ${isPastEvent ? "opacity-75 hover:opacity-100" : ""}`}
     >
       {/* Event image */}
 
@@ -189,10 +191,12 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
                   Seu evento
                 </span>
               )}
-              <h2 className="text-2xl font-bold text-gray-900">{event.name}</h2>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-slate-100">
+                {event.name}
+              </h2>
             </div>
             {isPastEvent && (
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800 mt-2">
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-slate-700 text-gray-800 dark:text-slate-100 mt-2">
                 Evento finalizado
               </span>
             )}
@@ -202,8 +206,8 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
             <span
               className={`px-4 py-1.5 font-semibold rounded-full shrink-0 ${
                 isPastEvent
-                  ? "bg-gray-50 text-gray-500"
-                  : "bg-green-50 text-green-700"
+                  ? "bg-gray-50 dark:bg-slate-700 text-gray-500 dark:text-slate-100"
+                  : "bg-green-50 dark:bg-green-800 text-green-700 dark:text-green-100"
               }`}
             >
               R$ {event.price.toFixed(2)}
@@ -218,12 +222,12 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
 
         {/* event details */}
         <div className="mt-4 space-y-3">
-          <div className="flex items-center text-gray-600">
+          <div className="flex items-center text-gray-600 dark:text-slate-400">
             <MapPinIcon className="size-4 mr-2" />
             <span>{event.location}</span>
           </div>
 
-          <div className="flex items-center text-gray-600">
+          <div className="flex items-center text-gray-600 dark:text-slate-400">
             <CalendarDaysIcon className="size-4 mr-2" />
             <span>
               {new Date(event.eventDate).toLocaleDateString("pt-BR")}{" "}
@@ -231,7 +235,7 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
             </span>
           </div>
 
-          <div className="flex items-center text-gray-600">
+          <div className="flex items-center text-gray-600 dark:text-slate-400">
             <TicketIcon className="size-4 mr-2" />
             <span>
               {availability.totalTickets - availability.purchasedCount} /{" "}
@@ -248,7 +252,7 @@ function EventCard({ eventId }: { eventId: Id<"events"> }) {
         </div>
 
         {/* event description */}
-        <p className="mt-4 text-gray-600 text-sm line-clamp-2">
+        <p className="mt-4 text-gray-600 dark:text-slate-400 text-sm line-clamp-2">
           {event.description}
         </p>
 

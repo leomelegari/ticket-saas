@@ -27,17 +27,19 @@ function Tickets() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">Meus ingressos</h1>
-            <p className="mt-2 text-gray-600">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-slate-300">
+              Meus ingressos
+            </h1>
+            <p className="mt-2 text-gray-600 dark:text-slate-500">
               Gerencie e visualize seus ingressos
             </p>
           </div>
-          <div className="bg-white px-4 py-2 rounded-lg shadow-sm border border-gray-100">
-            <div className="flex items-center gap-2 text-gray-600">
+          <div className="bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700">
+            <div className="flex items-center gap-2 text-gray-600 dark:text-slate-400">
               <TicketIcon className="w-5 h-5" />
               <span className="font-medium">
                 {tickets.length} - Ingressos totais
@@ -48,7 +50,7 @@ function Tickets() {
 
         {upcomingTickets.length > 0 && (
           <div className="mb-12">
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-300 mb-4">
               Eventos próximos
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -74,7 +76,7 @@ function Tickets() {
 
         {otherTickets.length > 0 && (
           <div>
-            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+            <h2 className="text-xl font-semibold text-gray-900 dark:text-slate-300 mb-4">
               Outros ingressos
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

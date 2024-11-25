@@ -90,14 +90,14 @@ function JoinQueue({
           queuePosition.offerExpiresAt <= Date.now())) && (
         <>
           {isEventOwner ? (
-            <div className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gray-100 text-gray-700 rounded-lg">
+            <div className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-slate-300 rounded-lg">
               <OctagonXIcon className="size-5" />
               <span>
                 Você não pode comprar ingresso para seu próprio evento
               </span>
             </div>
           ) : isPastEvent ? (
-            <div className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gray-100 text-gray-500 rounded-lg cursor-not-allowed">
+            <div className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gray-100 dark:bg-slate-700 text-gray-500 dark:text-slate-300 rounded-lg cursor-not-allowed">
               <ClockIcon className="size-5" />
               <span>Evento finalizado</span>
             </div>
@@ -111,7 +111,7 @@ function JoinQueue({
             <Button
               onClick={handleJoinQueue}
               disabled={isPastEvent || isEventOwner}
-              className="w-full disabled:cursor-not-allowed font-semibold"
+              className="w-full disabled:cursor-not-allowed dark:disabled:cursor-not-allowed font-semibold dark:bg-blue-900 dark:text-slate-50 dark:hover:bg-blue-800"
             >
               Comprar ingresso
             </Button>

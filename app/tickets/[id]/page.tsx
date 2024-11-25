@@ -36,24 +36,24 @@ export default function TicketPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-950 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="mb-8 space-y-8">
           {/* Navigation and Actions */}
           <div className="flex items-center justify-between">
             <Link
               href="/tickets"
-              className="flex items-center text-gray-600 hover:text-gray-900 transition-colors"
+              className="flex items-center text-gray-600 dark:text-slate-400 hover:text-gray-900 transition-colors"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               Voltar para meus ingressos
             </Link>
             <div className="flex items-center gap-4">
-              <button className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors rounded-lg hover:bg-gray-100">
+              <button className="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
                 <DownloadIcon className="w-4 h-4" />
                 <span className="text-sm">Salvar</span>
               </button>
-              <button className="flex items-center gap-2 px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors rounded-lg hover:bg-gray-100">
+              <button className="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-slate-400 hover:text-gray-900 dark:hover:text-slate-400 transition-colors rounded-lg hover:bg-gray-100 dark:hover:bg-slate-700">
                 <Share2Icon className="w-4 h-4" />
                 <span className="text-sm">Compartilhar</span>
               </button>
@@ -62,12 +62,12 @@ export default function TicketPage() {
 
           {/* Event Info Summary */}
           <div
-            className={`bg-white p-6 rounded-lg shadow-sm border ${ticket.event.is_cancelled ? "border-red-200" : "border-gray-100"}`}
+            className={`bg-white dark:bg-slate-900 p-6 rounded-lg shadow-sm border ${ticket.event.is_cancelled ? "border-red-200 dark:border-red-600" : "border-gray-100 dark:border-slate-800"}`}
           >
-            <h1 className="text-2xl font-bold text-gray-900">
+            <h1 className="text-2xl font-bold text-gray-900 dark:text-slate-300">
               {ticket.event.name}
             </h1>
-            <p className="mt-1 text-gray-600">
+            <p className="mt-1 text-gray-600 dark:text-slate-400">
               {new Date(ticket.event.eventDate).toLocaleDateString("pt-BR")} em{" "}
               {ticket.event.location}
             </p>
@@ -75,21 +75,21 @@ export default function TicketPage() {
               <span
                 className={`px-3 py-1 rounded-full text-sm font-medium ${
                   ticket.event.is_cancelled
-                    ? "bg-red-50 text-red-700"
-                    : "bg-green-50 text-green-700"
+                    ? "bg-red-50 dark:bg-red-900 text-red-700 dark:text-red-400"
+                    : "bg-green-50 dark:bg-green-900 text-green-700 dark:text-green-300"
                 }`}
               >
                 {ticket.event.is_cancelled ? "Cancelado" : "Válido"}
               </span>
-              <span className="text-sm text-gray-500">
+              <span className="text-sm text-gray-500 dark:text-slate-400">
                 Adquirido em{" "}
                 {new Date(ticket.purchasedAt).toLocaleDateString("pt-BR")}
               </span>
             </div>
             {ticket.event.is_cancelled && (
               <p className="mt-4 text-sm text-red-600">
-                This event has been cancelled. A refund will be processed if it
-                hasn&apos;t been already.
+                Este evento foi cancelado. Um reembolso será processado caso
+                ainda não tenha sido.
               </p>
             )}
           </div>
@@ -102,20 +102,24 @@ export default function TicketPage() {
         <div
           className={`mt-8 rounded-lg p-4 ${
             ticket.event.is_cancelled
-              ? "bg-red-50 border-red-100 border"
-              : "bg-blue-50 border-blue-100 border"
+              ? "bg-red-50 dark:bg-red-950 border-red-100 dark:border-red-900 border"
+              : "bg-blue-50 dark:bg-blue-950 border-blue-100 dark:border-blue-900 border"
           }`}
         >
           <h3
             className={`text-sm font-medium ${
-              ticket.event.is_cancelled ? "text-red-900" : "text-blue-900"
+              ticket.event.is_cancelled
+                ? "text-red-900 dark:text-red-500"
+                : "text-blue-900 dark:text-blue-500"
             }`}
           >
             Precisa de ajuda?
           </h3>
           <p
             className={`mt-1 text-sm ${
-              ticket.event.is_cancelled ? "text-red-700" : "text-blue-700"
+              ticket.event.is_cancelled
+                ? "text-red-700"
+                : "text-blue-700 dark:text-blue-600"
             }`}
           >
             {ticket.event.is_cancelled

@@ -42,9 +42,9 @@ function EventPage() {
     );
   }
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+        <div className="bg-white dark:bg-slate-900 rounded-xl shadow-sm overflow-hidden">
           {/* Event image */}
           {imageUrl && (
             <div className="aspect-[21/9] relative w-full">
@@ -64,47 +64,53 @@ function EventPage() {
               {/* left column */}
               <div className="space-y-8">
                 <div>
-                  <h1 className="text-4xl font-bold text-gray-900 mb-4">
+                  <h1 className="text-4xl font-bold text-gray-900 dark:text-slate-300 mb-4">
                     {event.name}
                   </h1>
-                  <p className="text-lg text-gray-600">{event.description}</p>
+                  <p className="text-lg text-gray-600 dark:text-slate-400">
+                    {event.description}
+                  </p>
                 </div>
 
                 <div className="grid grid-cols-2 gap-6">
-                  <div className=" bg-gray-50 p-4 rounded-lg border border-gray-100">
-                    <div className="flex items-center text-gray-600 mb-1">
-                      <CalendarDaysIcon className="size-5 mr-2 text-blue-600" />
+                  <div className=" bg-gray-50 dark:bg-slate-800 dark:border-slate-700 p-4 rounded-lg border border-gray-100">
+                    <div className="flex items-center text-gray-600 dark:text-slate-400 mb-1">
+                      <CalendarDaysIcon className="size-5 mr-2 text-blue-600 dark:text-blue-400" />
                       <span className="text-sm font-medium">Data</span>
                     </div>
-                    <p className="text-gray-900">
+                    <p className="text-gray-900 dark:text-slate-400">
                       {new Date(event.eventDate).toLocaleDateString("pt-BR")}
                     </p>
                   </div>
 
-                  <div className=" bg-gray-50 p-4 rounded-lg border border-gray-100">
-                    <div className="flex items-center text-gray-600 mb-1">
-                      <MapPinIcon className="size-5 mr-2 text-blue-600" />
+                  <div className=" bg-gray-50 dark:bg-slate-800 dark:border-slate-700 p-4 rounded-lg border border-gray-100">
+                    <div className="flex items-center text-gray-600 dark:text-slate-400 mb-1">
+                      <MapPinIcon className="size-5 mr-2 text-blue-600 dark:text-blue-400" />
                       <span className="text-sm font-medium">Local</span>
                     </div>
-                    <p className="text-gray-900">{event.location}</p>
+                    <p className="text-gray-900 dark:text-slate-400">
+                      {event.location}
+                    </p>
                   </div>
 
-                  <div className=" bg-gray-50 p-4 rounded-lg border border-gray-100">
-                    <div className="flex items-center text-gray-600 mb-1">
-                      <TicketIcon className="size-5 mr-2 text-blue-600" />
+                  <div className=" bg-gray-50 dark:bg-slate-800 dark:border-slate-700 p-4 rounded-lg border border-gray-100">
+                    <div className="flex items-center text-gray-600 dark:text-slate-400 mb-1">
+                      <TicketIcon className="size-5 mr-2 text-blue-600 dark:text-blue-400" />
                       <span className="text-sm font-medium">Preço</span>
                     </div>
-                    <p className="text-gray-900">R$ {event.price.toFixed(2)}</p>
+                    <p className="text-gray-900 dark:text-slate-400">
+                      R$ {event.price.toFixed(2)}
+                    </p>
                   </div>
 
-                  <div className=" bg-gray-50 p-4 rounded-lg border border-gray-100">
-                    <div className="flex items-center text-gray-600 mb-1">
-                      <UsersIcon className="size-5 mr-2 text-blue-600" />
+                  <div className=" bg-gray-50 dark:bg-slate-800 dark:border-slate-700 p-4 rounded-lg border border-gray-100">
+                    <div className="flex items-center text-gray-600 dark:text-slate-400 mb-1">
+                      <UsersIcon className="size-5 mr-2 text-blue-600 dark:text-blue-400" />
                       <span className="text-sm font-medium">
                         Disponibilidade
                       </span>
                     </div>
-                    <p className="text-gray-900">
+                    <p className="text-gray-900 dark:text-slate-400">
                       {availability.totalTickets - availability.purchasedCount}{" "}
                       / {availability.totalTickets} restantes
                     </p>
@@ -112,11 +118,11 @@ function EventPage() {
                 </div>
 
                 {/* additional event info */}
-                <div className="bg-blue-50 border border-blue-100 rounded-lg p-6">
-                  <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                <div className="bg-blue-50 dark:bg-blue-950 border border-blue-100 dark:border-blue-900 rounded-lg p-6">
+                  <h3 className="text-lg font-semibold text-blue-900 dark:text-blue-300 mb-2">
                     Informações do evento
                   </h3>
-                  <ul className="space-y-2 text-blue-700">
+                  <ul className="space-y-2 text-blue-700 dark:text-blue-400">
                     <li>
                       · Por favor, chegue 30 minutos antes do evento iniciar
                     </li>

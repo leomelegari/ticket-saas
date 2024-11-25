@@ -3,11 +3,12 @@ import Link from "next/link";
 import { Button } from "./ui/button";
 import { Ticket } from "lucide-react";
 import SearchBar from "./searchbar";
+import { ModeToggle } from "./theme-changer";
 
 function Header() {
   return (
     <div className="border-b ">
-      <div className="flex flex-col lg:flex-row items-center gap-4 p-4">
+      <div className="flex flex-col max-w-7xl mx-auto sm:px-6 lg:px-8 lg:flex-row items-center gap-4 p-4">
         <div className="flex items-center justify-between w-full lg:w-auto">
           <Link href="/" className="font-bold shrink-0 relative">
             {/* <div className="border-b-2 border-blue-600 w-6 absolute -top-1 -left-2"></div>
@@ -24,7 +25,10 @@ function Header() {
           {/* Login and logout rules */}
           <div className="lg:hidden">
             <SignedIn>
-              <UserButton />
+              <div className="flex gap-2">
+                <ModeToggle />
+                <UserButton />
+              </div>
             </SignedIn>
             <SignedOut>
               <SignInButton mode="modal">
@@ -44,11 +48,14 @@ function Header() {
           <SignedIn>
             <div className="flex items-center gap-3">
               <Link href="/seller">
-                <Button className="">Vender Ingressos</Button>
+                <Button className="dark:bg-blue-900 dark:text-white hover:dark:bg-blue-800">
+                  Vender Ingressos
+                </Button>
               </Link>
               <Link href="/tickets">
                 <Button variant="outline">Meus Ingressos</Button>
               </Link>
+              <ModeToggle />
               <UserButton />
             </div>
           </SignedIn>
@@ -63,7 +70,9 @@ function Header() {
         <div className="lg:hidden w-full flex justify-center gap-3">
           <SignedIn>
             <Link href="/seller" className="flex-1">
-              <Button className="w-full">Vender Ingressos</Button>
+              <Button className="w-full dark:bg-blue-900 dark:text-white hover:dark:bg-blue-800">
+                Vender Ingressos
+              </Button>
             </Link>
             <Link href="/tickets" className="flex-1">
               <Button variant="outline" className="w-full">

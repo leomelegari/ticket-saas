@@ -73,9 +73,9 @@ function SellerDashboard() {
 
   return (
     <div className="max-w-3xl mx-auto p-6">
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+      <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg overflow-hidden">
         {/* Header Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-800 px-6 py-8 text-white">
+        <div className="bg-gradient-to-r from-blue-600 dark:from-blue-900 to-blue-800 dark:to-blue-950 px-6 py-8 text-white">
           <h2 className="text-2xl font-bold">Página de vendas</h2>
           <p className="text-blue-100 mt-2">
             Administre seu perfil de vendedor e seus pagamentos
@@ -85,18 +85,18 @@ function SellerDashboard() {
         {/* Main Content */}
         {isReadyToAcceptPayments && (
           <>
-            <div className="bg-white p-8 rounded-lg">
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">
+            <div className="bg-white dark:bg-slate-900 p-8 rounded-lg">
+              <h2 className="text-2xl font-semibold text-gray-900 dark:text-slate-300 mb-6">
                 Venda ingressos para seus eventos
               </h2>
-              <p className="text-gray-600 mb-8">
+              <p className="text-gray-600 dark:text-slate-400 mb-8">
                 Liste e gerencie seus ingressos para venda
               </p>
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-4">
+              <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-slate-700 p-4">
                 <div className="flex justify-center gap-4">
                   <Link
                     href="/seller/new-event"
-                    className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center gap-2 bg-blue-600 dark:bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
                   >
                     <PlusIcon className="w-5 h-5" />
                     Criar evento
@@ -112,7 +112,7 @@ function SellerDashboard() {
               </div>
             </div>
 
-            <hr className="my-8" />
+            <hr className="my-8 border-dashed" />
           </>
         )}
 
@@ -156,8 +156,8 @@ function SellerDashboard() {
               {/* Status Cards */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Account Status Card */}
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="text-sm font-medium text-gray-500">
+                <div className="bg-gray-50 dark:bg-slate-800 rounded-lg p-4">
+                  <h3 className="text-sm font-medium text-gray-500 dark:text-slate-300">
                     Status da conta
                   </h3>
                   <div className="mt-2 flex items-center">
@@ -168,15 +168,15 @@ function SellerDashboard() {
                           : "bg-yellow-500"
                       }`}
                     />
-                    <span className="text-lg font-semibold">
+                    <span className="text-base font-semibold dark:text-slate-400">
                       {accountStatus.isActive ? "Ativa" : "Pendente"}
                     </span>
                   </div>
                 </div>
 
                 {/* Payments Status Card */}
-                <div className="bg-gray-50 rounded-lg p-4">
-                  <h3 className="text-sm font-medium text-gray-500">
+                <div className="bg-gray-50 dark:bg-slate-800 rounded-lg p-4">
+                  <h3 className="text-sm font-medium text-gray-500 dark:text-slate-300">
                     Pagamentos
                   </h3>
                   <div className="mt-2 space-y-1">
@@ -185,7 +185,7 @@ function SellerDashboard() {
                         className={`w-5 h-5 ${
                           accountStatus.chargesEnabled
                             ? "text-green-500"
-                            : "text-gray-400"
+                            : "text-gray-400 "
                         }`}
                         fill="currentColor"
                         viewBox="0 0 20 20"
@@ -196,7 +196,7 @@ function SellerDashboard() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span className="ml-2">
+                      <span className="ml-2 dark:text-slate-400">
                         {accountStatus.chargesEnabled
                           ? "Pode aceitar pagamentos"
                           : "Não pode aceitar pagamentos"}
@@ -218,7 +218,7 @@ function SellerDashboard() {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span className="ml-2">
+                      <span className="ml-2 dark:text-slate-400">
                         {accountStatus.payoutsEnabled
                           ? "Pode receber pagamentos"
                           : "Não pode receber pagamentos"}
@@ -230,16 +230,16 @@ function SellerDashboard() {
 
               {/* Requirements Section */}
               {accountStatus.requiresInformation && (
-                <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                  <h3 className="text-sm font-medium text-yellow-800 mb-3">
+                <div className="bg-yellow-50 dark:bg-yellow-950 border border-yellow-200 dark:border-yellow-900 rounded-lg p-4">
+                  <h3 className="text-sm font-medium text-yellow-800 dark:text-yellow-500 mb-3">
                     Informações obrigatórias
                   </h3>
                   {accountStatus.requirements.currently_due.length > 0 && (
                     <div className="mb-3">
-                      <p className="text-yellow-800 font-medium mb-2">
+                      <p className="text-yellow-800 dark:text-yellow-500 font-medium mb-2">
                         Ações necessárias:
                       </p>
-                      <ul className="list-disc pl-5 text-yellow-700 text-sm">
+                      <ul className="list-disc pl-5 text-yellow-700 dark:text-yellow-600 text-sm">
                         {accountStatus.requirements.currently_due.map((req) => (
                           <li key={req}>{req.replace(/_/g, " ")}</li>
                         ))}
@@ -248,10 +248,10 @@ function SellerDashboard() {
                   )}
                   {accountStatus.requirements.eventually_due.length > 0 && (
                     <div>
-                      <p className="text-yellow-800 font-medium mb-2">
+                      <p className="text-yellow-800 dark:text-yellow-500 font-medium text-sm mb-2">
                         Não obrigatórias, mas importantes:
                       </p>
-                      <ul className="list-disc pl-5 text-yellow-700 text-sm">
+                      <ul className="list-disc pl-5 text-yellow-700 dark:text-yellow-600 text-sm">
                         {accountStatus.requirements.eventually_due.map(
                           (req) => (
                             <li key={req}>{req.replace(/_/g, " ")}</li>
@@ -281,7 +281,7 @@ function SellerDashboard() {
                         }
                         setAccountLinkCreatePending(false);
                       }}
-                      className="mt-4 bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 transition-colors"
+                      className="mt-4 bg-yellow-600 dark:bg-yellow-700 text-white px-4 py-2 rounded-lg hover:bg-yellow-700 dark:hover:bg-yellow-600 transition-colors"
                     >
                       Completar informações
                     </button>
@@ -294,7 +294,7 @@ function SellerDashboard() {
                 {accountStatus.isActive && (
                   <button
                     onClick={handleManageAccount}
-                    className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex items-center"
+                    className="bg-blue-600 dark:bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:dark:bg-blue-800 transition-colors flex items-center"
                   >
                     <CogIcon className="w-4 h-4 mr-2" />
                     Dashboard
@@ -309,9 +309,10 @@ function SellerDashboard() {
               </div>
 
               {error && (
-                <div className="mt-4 bg-red-50 text-red-600 p-3 rounded-lg">
-                  Unable to access Stripe dashboard. Please complete all
-                  requirements first.
+                <div className="mt-4 bg-red-50 dark:bg-red-900 text-red-600 dark:text-red-400 p-3 rounded-lg">
+                  Para acessar o dashboard do Stripe e gerenciar seu
+                  faturamento, primeiro complete todos os requisitos
+                  obrigatórios.
                 </div>
               )}
             </div>
@@ -319,13 +320,13 @@ function SellerDashboard() {
 
           {/* Loading States */}
           {accountCreatePending && (
-            <div className="text-center py-4 text-gray-600">
-              Creating your seller account...
+            <div className="text-center py-4 text-gray-600 dark:text-slate-500">
+              Criando sua conta de vendedor...
             </div>
           )}
           {accountLinkCreatePending && (
-            <div className="text-center py-4 text-gray-600">
-              Preparing account setup...
+            <div className="text-center py-4 text-gray-600 dark:text-slate-500">
+              Preparando configurações da conta...
             </div>
           )}
         </div>

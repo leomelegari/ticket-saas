@@ -336,7 +336,7 @@ function EventForm({ mode, initialData }: EventFormProps) {
                 <>
                   <label
                     htmlFor="file"
-                    className="block w-42 mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-blue-50 text-blue-700 hover:bg-blue-100 cursor-pointer"
+                    className="block w-42 mr-4 py-2 px-4 rounded-full border-0 text-sm font-semibold bg-blue-50 dark:bg-blue-900 text-blue-700 dark:text-blue-300 hover:bg-blue-100 dark:hover:bg-blue-800 cursor-pointer"
                   >
                     Escolher imagem
                   </label>
@@ -356,7 +356,7 @@ function EventForm({ mode, initialData }: EventFormProps) {
         <Button
           type="submit"
           disabled={isPending}
-          className="w-full bg-gradient-to-r from-blue-600 to-blue-800 hover:from-blue-700 hover:to-blue-900 font-semibold flex items-center justify-center"
+          className="w-full dark:text-slate-50 bg-gradient-to-r from-blue-600 dark:from-blue-800 to-blue-800 dark:to-blue-900 hover:from-blue-700 hover:dark:from-blue-900 hover:to-blue-900 hover:dark:to-blue-950 font-semibold flex items-center justify-center"
         >
           {isPending ? (
             <>
