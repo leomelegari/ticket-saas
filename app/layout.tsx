@@ -20,6 +20,24 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const parkinSans = localFont({
+  src: "./fonts/Parkinsans-VariableFont_wght.ttf",
+  variable: "--font-parkin-sans",
+  weight: "100 200 300 400 500 600 700 800 900",
+});
+
+const redHatSans = localFont({
+  src: "./fonts/RedHatDisplay-VariableFont_wght.ttf",
+  variable: "--font-redhat-sans",
+  weight: "100 200 300 400 500 600 700 800 900",
+});
+
+const nunitoSans = localFont({
+  src: "./fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf",
+  variable: "--font-nunito-sans",
+  weight: "100 200 300 400 500 600 700 800 900",
+});
+
 export const metadata: Metadata = {
   title: "Event Hive",
 };

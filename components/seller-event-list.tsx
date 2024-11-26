@@ -82,10 +82,10 @@ function SellerEventCard({
       className={`bg-white dark:bg-slate-800 rounded-lg shadow-sm border ${event.is_cancelled ? "border-red-200 dark:border-red-600" : "border-gray-200 dark:border-slate-700"} overflow-hidden`}
     >
       <div className="p-6">
-        <div className="flex items-start gap-6">
+        <div className="flex flex-col items-start gap-6">
           {/* Event Image */}
           {imageUrl && (
-            <div className="relative w-40 h-40 rounded-lg overflow-hidden shrink-0">
+            <div className="relative w-full sm:w-[200px] size-40 rounded-lg overflow-hidden shrink-0">
               <Image
                 src={imageUrl}
                 alt={event.name}
@@ -96,8 +96,8 @@ function SellerEventCard({
           )}
 
           {/* Event Details */}
-          <div className="flex-1 min-w-0">
-            <div className="flex items-start justify-between gap-4">
+          <div className="flex-1 min-w-0 w-full">
+            <div className="flex flex-col sm:flex-row items-start justify-between gap-4">
               <div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-300">
                   {event.name}
@@ -114,12 +114,12 @@ function SellerEventCard({
                   </div>
                 )}
               </div>
-              <div className="flex items-center gap-2">
+              <div className="flex items-center w-full gap-2">
                 {!isPastEvent && !event.is_cancelled && (
-                  <div className="flex flex-col gap-2 lg:flex-row">
+                  <div className="flex w-full justify-end flex-col gap-2 lg:flex-row">
                     <Link
                       href={`/seller/events/${event._id}/edit`}
-                      className="shrink-0 flex justify-center items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-slate-300 bg-gray-100 dark:bg-slate-600 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-500 transition-colors"
+                      className="w-full sm:w-fit flex justify-center items-center gap-2 px-4 py-2 text-sm font-medium text-gray-700 dark:text-slate-300 bg-gray-100 dark:bg-slate-600 rounded-lg hover:bg-gray-200 dark:hover:bg-slate-500 transition-colors"
                     >
                       <Edit className="w-4 h-4" />
                       Editar
@@ -130,7 +130,7 @@ function SellerEventCard({
               </div>
             </div>
 
-            <div className="mt-4 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="mt-4 grid sm:grid-cols-2 md:grid-cols-4 gap-4">
               <div className="bg-gray-50 dark:bg-slate-700 p-3 rounded-lg">
                 <div className="flex items-center gap-2 text-gray-600 dark:text-slate-300 mb-1">
                   <Ticket className="w-4 h-4" />

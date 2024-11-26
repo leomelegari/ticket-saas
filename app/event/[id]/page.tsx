@@ -72,7 +72,7 @@ function EventPage() {
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-6">
+                <div className="grid sm:grid-cols-2 gap-6">
                   <div className=" bg-gray-50 dark:bg-slate-800 dark:border-slate-700 p-4 rounded-lg border border-gray-100">
                     <div className="flex items-center text-gray-600 dark:text-slate-400 mb-1">
                       <CalendarDaysIcon className="size-5 mr-2 text-blue-600 dark:text-blue-400" />

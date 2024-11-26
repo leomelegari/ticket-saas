@@ -53,7 +53,7 @@ export default function CancelEventButton({
     <button
       onClick={handleCancel}
       disabled={isCancelling}
-      className="flex items-center gap-2 px-4 py-2 text-red-600 dark:text-red-400 dark:bg-red-900 hover:text-red-400 hover:dark:text-red-400 hover:dark:bg-red-800 rounded-lg transition-colors"
+      className="flex w-full sm:w-fit items-center justify-center gap-2 px-4 py-2 bg-red-50 text-red-600 dark:text-red-400 dark:bg-red-900 hover:text-red-400 hover:dark:text-red-400 hover:dark:bg-red-800 rounded-lg transition-colors"
     >
       <Ban className="w-4 h-4 shrink-0" />
       <span className="text-base">

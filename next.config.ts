@@ -8,6 +8,7 @@ const nextConfig: NextConfig = {
       { hostname: "zealous-dotterel-237.convex.cloud", protocol: "https" },
     ],
   },
+  reactStrictMode: false,
 };
 
 export default nextConfig;

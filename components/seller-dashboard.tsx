@@ -93,17 +93,17 @@ function SellerDashboard() {
                 Liste e gerencie seus ingressos para venda
               </p>
               <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-200 dark:border-slate-700 p-4">
-                <div className="flex justify-center gap-4">
+                <div className="flex flex-col sm:flex-row justify-center gap-4">
                   <Link
                     href="/seller/new-event"
-                    className="flex items-center gap-2 bg-blue-600 dark:bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
+                    className="flex justify-center items-center gap-2 bg-blue-600 dark:bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
                   >
                     <PlusIcon className="w-5 h-5" />
                     Criar evento
                   </Link>
                   <Link
                     href="/seller/events"
-                    className="flex items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors"
+                    className="flex justify-center items-center gap-2 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors"
                   >
                     <CalendarDaysIcon className="w-5 h-5" />
                     Meus eventos
@@ -290,11 +290,11 @@ function SellerDashboard() {
               )}
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap gap-3 mt-6">
+              <div className="flex flex-col sm:flex-row gap-3 mt-6">
                 {accountStatus.isActive && (
                   <button
                     onClick={handleManageAccount}
-                    className="bg-blue-600 dark:bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:dark:bg-blue-800 transition-colors flex items-center"
+                    className="bg-blue-600 dark:bg-blue-900 text-white px-4 py-2 rounded-lg hover:bg-blue-700 dark:hover:dark:bg-blue-800 transition-colors flex items-center justify-center"
                   >
                     <CogIcon className="w-4 h-4 mr-2" />
                     Dashboard

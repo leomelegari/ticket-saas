@@ -68,7 +68,19 @@ function Ticket({ ticketId }: { ticketId: Id<"tickets"> }) {
 
       {/* Ticket Content */}
       <div className="p-6">
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-6">
+          {/* Right Column - QR Code - MOPBILE ONLY */}
+          <div className="flex  sm:hidden flex-col items-center justify-center border-b border-gray-200 dark:border-slate-700 pb-6">
+            <div
+              className={`bg-gray-100 p-4 rounded-lg ${ticket.event.is_cancelled ? "opacity-50" : ""}`}
+            >
+              <QRCode value={ticket._id} className="size-44" />
+            </div>
+            <p className="mt-2 text-sm text-gray-500 dark:text-slate-300 break-all text-center max-w-[200px] md:max-w-full">
+              Ticket ID: {ticket._id}
+            </p>
+          </div>
+
           {/* Left Column - Event Details */}
           <div className="space-y-4">
             <div className="flex items-start text-gray-600 dark:text-slate-400 ">
@@ -139,12 +151,12 @@ function Ticket({ ticketId }: { ticketId: Id<"tickets"> }) {
             </div>
           </div>
 
-          {/* Right Column - QR Code */}
-          <div className="flex flex-col items-center justify-center border-l border-gray-200 dark:border-slate-700 pl-6">
+          {/* Right Column - QR Code - DESTKTOO ONLY */}
+          <div className="hidden  sm:flex flex-col items-center justify-center border-l border-gray-200 dark:border-slate-700 pl-6">
             <div
               className={`bg-gray-100 p-4 rounded-lg ${ticket.event.is_cancelled ? "opacity-50" : ""}`}
             >
-              <QRCode value={ticket._id} className="w-32 h-32" />
+              <QRCode value={ticket._id} className="size-40" />
             </div>
             <p className="mt-2 text-sm text-gray-500 dark:text-slate-300 break-all text-center max-w-[200px] md:max-w-full">
               Ticket ID: {ticket._id}
