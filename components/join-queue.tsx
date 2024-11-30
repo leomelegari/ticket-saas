@@ -80,7 +80,6 @@ function JoinQueue({
 
   const isPastEvent = event.eventDate < Date.now();
 
-  console.log("queuePosition ", queuePosition);
   return (
     <div>
       {(!queuePosition ||

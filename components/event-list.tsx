@@ -27,7 +27,7 @@ function EventList() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-8">
         <div className="">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-slate-300">
             Eventos próximos
@@ -36,8 +36,8 @@ function EventList() {
             Descubra e compre ingressos para eventos surpreendentes!
           </p>
         </div>
-        <div className="bg-white dark:bg-slate-800 px-4 py-2 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700 ">
-          <div className="flex items-center gap-2 text-gray-600 dark:text-slate-400">
+        <div className="bg-white dark:bg-slate-800 w-fit px-4 py-2 rounded-lg shadow-sm border border-gray-100 dark:border-slate-700 ">
+          <div className="flex w-fit items-center gap-2 text-gray-600 dark:text-slate-400">
             <CalendarDaysIcon className="size-5" />
             <span className="font-medium">
               {upcommingEvents.length} eventos próximos
