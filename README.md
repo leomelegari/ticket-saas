@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎟️ Ticket SaaS
 
-## Getting Started
+**Ticket SaaS** is a modern, full-stack SaaS boilerplate designed for building scalable ticketing or support platforms. Developed with **Next.js**, **Convex**, and **Tailwind CSS**, it provides a robust foundation for developers aiming to create dynamic SaaS applications.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- **Next.js 14 App Router**: Utilizes the latest routing capabilities for efficient navigation.
+- **Convex Backend**: Integrates with Convex for real-time data synchronization and backend logic.
+- **Tailwind CSS**: Offers a utility-first CSS framework for rapid UI development.
+- **Modular Architecture**: Organized codebase with clear separation of concerns.
+- **Responsive Design**: Ensures optimal viewing across various devices.
+
+---
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+ticket-saas/
+├── app/                  # Next.js application directory
+├── components/           # Reusable UI components
+├── convex/               # Convex backend functions and configuration
+├── hooks/                # Custom React hooks
+├── images/               # Static image assets
+├── lib/                  # Utility libraries and helpers
+├── public/               # Public assets
+├── .gitignore            # Git ignore rules
+├── README.md             # Project documentation
+├── components.json       # Component metadata
+├── middleware.ts         # Middleware configurations
+├── next.config.ts        # Next.js configuration
+├── package.json          # Project dependencies and scripts
+├── postcss.config.mjs    # PostCSS configuration
+├── tailwind.config.ts    # Tailwind CSS configuration
+└── tsconfig.json         # TypeScript configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+Ensure you have the following installed:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Node.js](https://nodejs.org/) (v14 or later)
+- [npm](https://www.npmjs.com/) or [Yarn](https://yarnpkg.com/)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Installation
 
-## Deploy on Vercel
+1. **Clone the repository:**
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+   ```bash
+   git clone https://github.com/leomelegari/ticket-saas.git
+   cd ticket-saas
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Install dependencies:**
+
+Using npm:
+```
+npm install
+```
+3. **Run the development server:**
+
+Using npm:
+```
+npm run dev
+```
+
+4. **Access the application:**
+
+Open your browser and navigate to http://localhost:3000 to view the application.

@@ -8,6 +8,7 @@ import { useStorageUrl } from "@/hooks/use-storage-url";
 import { useQuery } from "convex/react";
 import {
   CalendarDaysIcon,
+  CheckIcon,
   IdCardIcon,
   Loader2Icon,
   MapPinIcon,
@@ -72,9 +73,15 @@ function Ticket({ ticketId }: { ticketId: Id<"tickets"> }) {
           {/* Right Column - QR Code - MOPBILE ONLY */}
           <div className="flex  sm:hidden flex-col items-center justify-center border-b border-gray-200 dark:border-slate-700 pb-6">
             <div
-              className={`bg-gray-100 p-4 rounded-lg ${ticket.event.is_cancelled ? "opacity-50" : ""}`}
+              className={`bg-gray-100 relative p-4 rounded-lg ${ticket.event.is_cancelled ? "opacity-50" : ticket.status === "used" ? "bg-green-500" : ""}`}
             >
-              <QRCode value={ticket._id} className="size-44" />
+              <QRCode
+                value={ticket._id}
+                className={`size-44 ${ticket.status === "used" ? "opacity-70" : ""}`}
+              />
+              {ticket.status === "used" && (
+                <CheckIcon className="size-16 bg-white rounded-full text-green-500 absolute left-[75px] top-[110px] -translate-y-10" />
+              )}
             </div>
             <p className="mt-2 text-sm text-gray-500 dark:text-slate-300 break-all text-center max-w-[200px] md:max-w-full">
               Ticket ID: {ticket._id}
@@ -152,11 +159,17 @@ function Ticket({ ticketId }: { ticketId: Id<"tickets"> }) {
           </div>
 
           {/* Right Column - QR Code - DESTKTOO ONLY */}
-          <div className="hidden  sm:flex flex-col items-center justify-center border-l border-gray-200 dark:border-slate-700 pl-6">
+          <div className="hidden  sm:flex relative flex-col items-center justify-center border-l border-gray-200 dark:border-slate-700 pl-6">
             <div
-              className={`bg-gray-100 p-4 rounded-lg ${ticket.event.is_cancelled ? "opacity-50" : ""}`}
+              className={`bg-gray-100 p-4 rounded-lg ${ticket.event.is_cancelled ? "opacity-50" : ticket.status === "used" ? "bg-green-500" : ""}`}
             >
-              <QRCode value={ticket._id} className="size-40" />
+              <QRCode
+                value={ticket._id}
+                className={`size-40 ${ticket.status === "used" ? "opacity-70" : ""}`}
+              />
+              {ticket.status === "used" && (
+                <CheckIcon className="size-16 bg-white rounded-full text-green-500 absolute left-[155px] top-1/2 -translate-y-10" />
+              )}
             </div>
             <p className="mt-2 text-sm text-gray-500 dark:text-slate-300 break-all text-center max-w-[200px] md:max-w-full">
               Ticket ID: {ticket._id}

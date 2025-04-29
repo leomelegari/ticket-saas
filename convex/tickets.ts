@@ -1,5 +1,6 @@
 import { v, ConvexError } from "convex/values";
 import { mutation, query } from "./_generated/server";
+import { auth } from "@clerk/nextjs/server";
 
 export const getValidTicketsForEvent = query({
   args: { eventId: v.id("events") },
@@ -47,6 +48,7 @@ export const getTicketWithDetails = query({
   args: { ticketId: v.id("tickets") },
   async handler(ctx, { ticketId }) {
     const ticket = await ctx.db.get(ticketId);
+
     if (!ticket) {
       return null;
     }
@@ -57,5 +59,36 @@ export const getTicketWithDetails = query({
       ...ticket,
       event,
     };
+  },
+});
+
+export const validateTicket = mutation({
+  args: {
+    ticketId: v.id("tickets"),
+    userId: v.string(),
+    eventOwnerId: v.string(),
+  },
+  async handler(ctx, { ticketId, eventOwnerId, userId }) {
+    const ticket = await ctx.db.get(ticketId);
+    if (!ticket) {
+      return null;
+    }
+
+    const event = await ctx.db.get(ticket.eventId);
+    if (!event) {
+      return null;
+    }
+
+    if (userId !== eventOwnerId) {
+      return {
+        success: false,
+        message:
+          "Para validar o ingresso é necessário estar logado na conta do criador do evento ou ser membro do time do criador",
+      };
+    }
+
+    await ctx.db.patch(ticketId, { status: "used" });
+
+    return { success: true, message: "Ingresso validado com sucesso!" };
   },
 });
